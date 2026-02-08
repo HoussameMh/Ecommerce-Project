@@ -1,15 +1,15 @@
 const mongoose = require('mongoose')
 
 const cartItemSchema = new mongoose.Schema({
-  product:{
+  product: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Product',
     required: true
   },
-  quantity:{
-    type : Number,
+  quantity: {
+    type: Number,
     required: true,
-    min:[1,'quantity must be positif']
+    min: [1, 'quantity must be positif']
   }
 });
 
@@ -20,7 +20,7 @@ const CartSchema = new mongoose.Schema({
     required: true
   },
   items: [cartItemSchema],
-  subTotalCents:{ type:Number},
+  subTotalCents: { type: Number },
   updatedAt: { type: Date, default: Date.now }
 })
 
