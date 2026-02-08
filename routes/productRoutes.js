@@ -4,10 +4,12 @@ const router = express.Router()
 const { authenticateUser } = require('../middleware/authentication')
 const { authorizePermissions } = require('../middleware/full-auth')
 
-const { createProduct, getAllProducts, getProduct, updateProduct, deleteProduct } = require('../controllers/productController')
+const { createProduct, getAllProducts, getProduct, getTopRatedProducts, updateProduct, deleteProduct } = require('../controllers/productController')
 
 router.get('/', getAllProducts)
 router.get('/:id', getProduct)
+router.get('/',getTopRatedProducts)
+
 
 router.use([authenticateUser, authorizePermissions])
 

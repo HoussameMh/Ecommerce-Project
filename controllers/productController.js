@@ -97,6 +97,12 @@ const getProduct = async (req, res) => {
   res.status(StatusCodes.OK).json({ product })
 }
 
+const getTopRatedProducts = async (req, res) => {
+  const products = await Product.find({}).sort('-averageRating').limit(5);
+
+  res.status(StatusCodes.OK).json({ products });
+};
+
 const updateProduct = async (req, res) => {
   const {
     params: { id: productId },
@@ -129,6 +135,7 @@ module.exports = {
   createProduct,
   getAllProducts,
   getProduct,
+  getTopRatedProducts,
   updateProduct,
   deleteProduct
 }
