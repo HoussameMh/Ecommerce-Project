@@ -21,7 +21,7 @@ const OrderSchema = new mongoose.Schema({
     country: { type: String, required: true }
   },
   status: {
-    type:String,
+    type: String,
     enum: ['pending', 'paid', 'shipped', 'delivered', 'canceled'],
     default: 'pending'
   },

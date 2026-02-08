@@ -1,7 +1,7 @@
 const Cart = require('../models/Cart')
 const Product = require('../models/Product')
 const { StatusCodes } = require('http-status-codes')
-const { NotFoundError } = require('../errors/not-found')
+const { NotFoundError } = require('../errors')
 
 const getCart = async (req, res) => {
   const { userId } = req.user
