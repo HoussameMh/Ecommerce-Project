@@ -2,13 +2,14 @@ import axios from 'axios';
 import { useNavigate } from 'react-router';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { showToast } from '../utils/showToast';
+import { showToast } from '../../utils/showToast';
 
-import AuthImage from '../assets/authImage.png'
+
+import AuthImage from '../../assets/authImage.png'
 
 import './authPages.css'
 
-export function RegisterPage() {
+export function RegisterPage({onAuthSuccess}) {
   const navigate = useNavigate()
 
   const [lastName, setLastName] = useState('');
@@ -26,6 +27,7 @@ export function RegisterPage() {
         password
       });
       localStorage.setItem('token', response.data.token);
+      onAuthSuccess()
       showToast("Register successful! Redirecting...", "success");
       navigate('/');
     }

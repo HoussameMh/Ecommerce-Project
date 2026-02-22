@@ -27,6 +27,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  
 }
 
 .login-card {
@@ -37,6 +38,7 @@ main {
   width: 100%;
   max-width: 450px;
   text-align: center;
+  margin-right: 80px;
 }
 
 

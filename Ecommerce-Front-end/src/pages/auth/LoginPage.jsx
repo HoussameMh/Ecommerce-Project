@@ -2,13 +2,13 @@ import axios from 'axios';
 import { useNavigate } from 'react-router';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { showToast } from '../utils/showToast';
+import { showToast } from '../../utils/showToast';
 
-import AuthImage from '../assets/authImage.png'
+import AuthImage from '../../assets/authImage.png'
 
 import './authPages.css'
 
-export function LoginPage() {
+export function LoginPage({onAuthSuccess}) {
   const navigate = useNavigate()
 
   const [email, setEmail] = useState('');
@@ -22,6 +22,7 @@ export function LoginPage() {
         password
       });
       localStorage.setItem('token', response.data.token);
+      onAuthSuccess();
       showToast("Login successful! Redirecting...", "success");
       navigate('/');
     }
