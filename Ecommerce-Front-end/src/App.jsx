@@ -1,4 +1,5 @@
-import { Routes, Route,useNavigate } from 'react-router'
+
+import { Routes, Route, useNavigate } from 'react-router'
 import { useEffect, useState } from "react";
 import { LoginPage } from "./pages/auth/LoginPage"
 import { RegisterPage } from './pages/auth/RegisterPage'
@@ -25,13 +26,15 @@ function App() {
     setIsAuth(false);
     navigate('/login');
   };
+  
+
   return (
     <>
-      <Header isAuth={isAuth}  handleLogout={handleLogout}/>
+      <Header isAuth={isAuth} handleLogout={handleLogout}  />
       <Routes>
         <Route path='login' element={<LoginPage onAuthSuccess={handleAuthUpdate} />} />
         <Route path='register' element={<RegisterPage onAuthSuccess={handleAuthUpdate} />}></Route>
-        <Route index element={<HomePage />}></Route>
+        <Route index element={<HomePage  />}></Route>
       </Routes>
     </>
 
