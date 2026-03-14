@@ -1,10 +1,13 @@
 import axios from 'axios'
 import { Routes, Route, useNavigate } from 'react-router'
 import { useEffect, useState } from "react";
+import { Header } from './components/Header'
 import { LoginPage } from "./pages/auth/LoginPage"
 import { RegisterPage } from './pages/auth/RegisterPage'
 import { HomePage } from './pages/home/HomePage'
-import { Header } from './components/Header'
+import { CartPage } from './pages/cart/cartPage'
+import {CheckoutPage} from './pages/cart/checkoutPage'
+import {OrdersPage} from './pages/orders/ordersPage'
 import './App.css'
 
 function App() {
@@ -12,6 +15,7 @@ function App() {
   const navigate = useNavigate();
   const [isAuth, setIsAuth] = useState(false);
   const [cartCount, setCartCount] = useState(0);
+
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -27,6 +31,8 @@ function App() {
     setIsAuth(false);
     navigate('/login');
   };
+
+
 
   const fetchCartCount = async () => {
     try {
@@ -54,7 +60,10 @@ function App() {
       <Routes>
         <Route path='login' element={<LoginPage onAuthSuccess={handleAuthUpdate} />} />
         <Route path='register' element={<RegisterPage onAuthSuccess={handleAuthUpdate} />}></Route>
-        <Route index element={<HomePage  refreshCart={fetchCartCount}/>}  ></Route>
+        <Route index element={<HomePage refreshCart={fetchCartCount} />}  ></Route>
+        <Route path="cart" element={<CartPage refreshCount={fetchCartCount} />} />
+        <Route path="/checkout" element={<CheckoutPage refreshCount={fetchCartCount} />} />
+        <Route path="/orders" element={<OrdersPage />} />
       </Routes>
     </>
 

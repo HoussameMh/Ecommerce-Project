@@ -1,0 +1,90 @@
+.checkout-wrapper {
+  background-color: #f8f9fb;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.checkout-card {
+  background: white;
+  width: 100%;
+  max-width: 550px;
+  padding: 40px;
+  border-radius: 24px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+}
+
+.checkout-card h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.checkout-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #717171;
+  text-transform: uppercase;
+  margin-left: 5px;
+}
+
+.input-group input {
+  padding: 15px 20px;
+  border: 1.5px solid #f2f4f7;
+  border-radius: 14px;
+  font-size: 1rem;
+  background-color: #fcfdfe;
+  transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #1a1a1a;
+  background-color: white;
+}
+
+.checkout-card .row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.confirm-btn {
+  background: #1a1a1a;
+  color: white;
+  border: none;
+  padding: 18px;
+  border-radius: 14px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+}
+
+.confirm-btn:hover {
+  background: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.input-group input:disabled {
+  background-color: #f2f4f7;
+  cursor: not-allowed;
+  color: #a1a1a1;
+}

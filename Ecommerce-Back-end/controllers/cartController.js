@@ -29,10 +29,11 @@ const addToCart = async (req, res) => {
   const { userId } = req.user
   const { productId, quantity } = req.body
 
-  const product = await Product.findById(productId)
+  const qty = Number(quantity) 
 
+  const product = await Product.findById(productId)
   if (!product) {
-    throw new NotFoundError(`Non product with this id  : ${productId}`)
+    throw new NotFoundError(`No product with this id : ${productId}`)
   }
 
   let cart = await Cart.findOne({ user: userId })
@@ -43,12 +44,15 @@ const addToCart = async (req, res) => {
   const itemIndex = cart.items.findIndex((item) => item.product.toString() === productId)
 
   if (itemIndex > -1) {
-    cart.items[itemIndex].quantity += quantity
+    cart.items[itemIndex].quantity += qty
   } else {
-    cart.items.push({ product: productId, quantity })
+    cart.items.push({ product: productId, quantity: qty })
   }
 
   await calculSubTotal(cart)
+
+  await cart.save() 
+
   res.status(StatusCodes.OK).json({ cart })
 }
 
@@ -87,6 +91,7 @@ const removeItemFromCart = async (req, res) => {
   await calculSubTotal(cart)
   res.status(StatusCodes.OK).json({ cart })
 }
+
 const clearCart = async (req, res) => {
   const { userId } = req.user
   const cart = await Cart.findOneAndUpdate(
