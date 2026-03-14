@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router';
 import { showToast } from '../../utils/showToast';
 
 import './homePage.css'
-export function HomePage() {
+export function HomePage({refreshCart}) {
   const navigate = useNavigate()
 
   const [products, setProducts] = useState([]);
@@ -55,6 +55,7 @@ export function HomePage() {
       );
 
       showToast(`${product.name} ajouté au panier !`, 'success');
+      refreshCart();
       console.log("Panier mis à jour :", response.data.cart);
     } catch (error) {
       console.error("Erreur panier :", error.response?.data?.msg || "Erreur serveur");

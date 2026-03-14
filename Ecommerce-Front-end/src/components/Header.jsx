@@ -1,7 +1,7 @@
 import { NavLink } from "react-router";
 import './header.css'
 
-export function Header({isAuth,handleLogout}) {
+export function Header({isAuth,handleLogout,cartCount}) {
 
 
 
@@ -43,7 +43,7 @@ export function Header({isAuth,handleLogout}) {
             <NavLink to="/cart" className="cart-link">
               <div className="cart-icon-wrapper">
                 <i className="fa-solid fa-bag-shopping"></i>
-                <span className="cart-badge">0</span>
+                <span className="cart-badge">{cartCount}</span>
               </div>
             </NavLink>
             <NavLink to="/profile" className="header-NavLink">
