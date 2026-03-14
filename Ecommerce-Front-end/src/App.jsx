@@ -8,6 +8,7 @@ import { HomePage } from './pages/home/HomePage'
 import { CartPage } from './pages/cart/cartPage'
 import {CheckoutPage} from './pages/cart/checkoutPage'
 import {OrdersPage} from './pages/orders/ordersPage'
+import {ContactPage} from './components/contactPage'
 import './App.css'
 
 function App() {
@@ -64,6 +65,7 @@ function App() {
         <Route path="cart" element={<CartPage refreshCount={fetchCartCount} />} />
         <Route path="/checkout" element={<CheckoutPage refreshCount={fetchCartCount} />} />
         <Route path="/orders" element={<OrdersPage />} />
+        <Route path="/contact" element={<ContactPage />} />
       </Routes>
     </>
 

@@ -50,7 +50,6 @@ const getMyOrders = async (req, res) => {
 }
 
 const getOrderDetail = async (req, res) => {
-  console.log('Type de NotFoundError:', typeof NotFoundError);
   const { userId, isAdmin } = req.user
   const { id: orderId } = req.params
   const order = await Order.findById({ _id: orderId })
