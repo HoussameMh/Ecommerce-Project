@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router';
 import { showToast } from '../../utils/showToast';
+import { Link } from 'react-router-dom';
 
 import './homePage.css'
 export function HomePage({refreshCart}) {
@@ -109,8 +110,10 @@ export function HomePage({refreshCart}) {
 
 
         <section className="products-grid">
+
           {products.map((product) => (
-            <div key={product._id} className="product-card">
+            <Link key={product._id} to={`/product/${product._id}`} className="product-card-link">
+            <div className="product-card">
               <div className="product-top">
 
                 <div className="hover-rating">
@@ -133,7 +136,8 @@ export function HomePage({refreshCart}) {
                   <span className="price">{product.price} MAD</span>
                 </button>
               </div>
-            </div>
+            </div>          
+            </Link>
           ))}
         </section>
       </div>

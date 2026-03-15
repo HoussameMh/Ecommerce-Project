@@ -9,6 +9,7 @@ import { CartPage } from './pages/cart/cartPage'
 import {CheckoutPage} from './pages/cart/checkoutPage'
 import {OrdersPage} from './pages/orders/ordersPage'
 import {ContactPage} from './components/contactPage'
+import { ProductPage } from './pages/product/productPage';
 import './App.css'
 
 function App() {
@@ -63,6 +64,7 @@ function App() {
         <Route path='register' element={<RegisterPage onAuthSuccess={handleAuthUpdate} />}></Route>
         <Route index element={<HomePage refreshCart={fetchCartCount} />}  ></Route>
         <Route path="cart" element={<CartPage refreshCount={fetchCartCount} />} />
+        <Route path="/product/:id" element={<ProductPage refreshCount={fetchCartCount}/>} />
         <Route path="/checkout" element={<CheckoutPage refreshCount={fetchCartCount} />} />
         <Route path="/orders" element={<OrdersPage />} />
         <Route path="/contact" element={<ContactPage />} />

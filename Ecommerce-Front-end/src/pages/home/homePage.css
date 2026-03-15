@@ -248,3 +248,16 @@
 .addToCart-button:active {
   transform: scale(0.95);
 }
+
+.product-card-link {
+  text-decoration: none; 
+  color: inherit;       
+  display: contents;    
+}
+
+
+.product-card-link:hover .product-card {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
