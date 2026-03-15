@@ -10,7 +10,9 @@ import {CheckoutPage} from './pages/cart/checkoutPage'
 import {OrdersPage} from './pages/orders/ordersPage'
 import {ContactPage} from './components/contactPage'
 import { ProductPage } from './pages/product/productPage';
+import { ProfilePage } from './pages/profile/profilePage';
 import './App.css'
+
 
 function App() {
 
@@ -68,6 +70,7 @@ function App() {
         <Route path="/checkout" element={<CheckoutPage refreshCount={fetchCartCount} />} />
         <Route path="/orders" element={<OrdersPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/profile" element={<ProfilePage handleLogout={handleLogout}/>} />
       </Routes>
     </>
 

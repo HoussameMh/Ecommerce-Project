@@ -11,6 +11,9 @@ export function ProductPage({ refreshCount }) {
   const [mainImage, setMainImage] = useState('');
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState('reviews');
+  const [newRating, setNewRating] = useState(5);
+  const [newComment, setNewComment] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -51,6 +54,31 @@ export function ProductPage({ refreshCount }) {
     if (reviews.length === 0) return '0%';
     const count = reviews.filter(r => r.rating === rating).length;
     return `${(count / reviews.length) * 100}%`;
+  };
+
+  const handleAddReview = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) return showToast("Please login to leave a review", "error");
+
+      await axios.post('/api/v1/reviews',
+        { productId: id, rating: newRating, comment: newComment },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+
+      showToast("Review added! Thank you.", "success");
+      setNewComment('');
+      setNewRating(5);
+
+      const reviewsRes = await axios.get(`/api/v1/reviews/product/${id}`);
+      setReviews(reviewsRes.data.reviews);
+    } catch (error) {
+      showToast(error.response?.data?.msg || "Error adding review", "error");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (!product) return <div className="loading">Loading Nova Product...</div>;
@@ -130,6 +158,31 @@ export function ProductPage({ refreshCount }) {
 
           {activeTab === 'reviews' && (
             <div className="reviews-tab">
+
+              <div className="add-review-section">
+                <h3>Write a Review</h3>
+                <form onSubmit={handleAddReview}>
+                  <div className="star-picker">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <i
+                        key={star}
+                        className={star <= newRating ? "fa-solid fa-star" : "fa-regular fa-star"}
+                        onClick={() => setNewRating(star)}
+                      ></i>
+                    ))}
+                  </div>
+                  <textarea
+                    placeholder="What did you think about this product?"
+                    value={newComment}
+                    onChange={(e) => setNewComment(e.target.value)}
+                    required
+                  ></textarea>
+                  <button type="submit" disabled={isSubmitting} className="submit-review-btn">
+                    {isSubmitting ? "Posting..." : "Post Review"}
+                  </button>
+                </form>
+              </div>
+              
               <div className="reviews-grid">
                 <div className="rating-stats">
                   <h3>{product.rating?.averageRating || 0}</h3>

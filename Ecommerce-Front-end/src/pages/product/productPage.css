@@ -1,9 +1,4 @@
-/* ===========================
-   PRODUCT PAGE
-   Nova Market — consistent theme
-   =========================== */
 
-/* Matches vars from homePage.css / App.css */
 :root {
   --nova-dark:      #1e2a30;
   --nova-black:     #1a1a1a;
@@ -18,10 +13,10 @@
   --nova-radius-sm: 12px;
   --shadow-sm:      0 4px 20px rgba(0,0,0,0.03);
   --transition:     all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --font:           'Raleway', sans-serif;
+
 }
 
-/* ---- Loading ---- */
+
 .loading {
   display: flex;
   align-items: center;
@@ -32,7 +27,7 @@
   font-family: var(--font);
 }
 
-/* ---- Wrapper ---- */
+
 .product-page-wrapper {
   max-width: 1200px;
   margin: 0 auto;
@@ -45,7 +40,7 @@
   min-height: 100vh;
 }
 
-/* ---- Breadcrumbs ---- */
+
 .breadcrumbs {
   font-size: 0.72rem;
   color: var(--nova-muted);
@@ -55,7 +50,6 @@
   font-weight: 500;
 }
 
-/* ---- Top Section ---- */
 .product-top-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -67,7 +61,6 @@
   margin-bottom: 32px;
 }
 
-/* ---- Gallery ---- */
 .product-gallery {
   display: flex;
   flex-direction: column;
@@ -189,7 +182,7 @@
 .stock-tag.in  { background: #f0fdf4; color: #16a34a; }
 .stock-tag.out { background: #fef2f2; color: var(--nova-red); }
 
-/* ---- Price ---- */
+
 .price-tag {
   font-size: 2rem;
   font-weight: 800;
@@ -197,7 +190,7 @@
   letter-spacing: -0.03em;
 }
 
-/* ---- Short Description ---- */
+
 .short-desc {
   font-size: 0.9rem;
   color: var(--nova-muted);
@@ -207,7 +200,6 @@
   padding: 16px 0;
 }
 
-/* ---- Actions Row ---- */
 .actions-row {
   display: flex;
   align-items: center;
@@ -250,7 +242,7 @@
   color: var(--nova-black);
 }
 
-/* Add to Cart — matches homepage addToCart-button dark style */
+
 .add-btn {
   flex: 1;
   display: flex;
@@ -282,7 +274,6 @@
   cursor: not-allowed;
 }
 
-/* ---- Buy Button ---- */
 .buy-btn {
   width: 100%;
   padding: 14px;
@@ -304,7 +295,7 @@
   border-color: var(--nova-dark);
 }
 
-/* ---- Footer Links ---- */
+
 .product-footer-links {
   display: flex;
   gap: 24px;
@@ -327,10 +318,6 @@
 .product-footer-links span:hover {
   color: var(--nova-black);
 }
-
-/* ===========================
-   TABS SECTION
-   =========================== */
 
 .product-tabs-section {
   background: var(--nova-white);
@@ -385,7 +372,7 @@
   padding: 36px 32px;
 }
 
-/* ---- Details Tab ---- */
+
 .details-tab p {
   font-size: 0.92rem;
   color: var(--nova-muted);
@@ -393,7 +380,7 @@
   max-width: 700px;
 }
 
-/* ---- Reviews Tab ---- */
+
 .reviews-grid {
   display: grid;
   grid-template-columns: 180px 1fr;
@@ -448,7 +435,7 @@
   transition: width 0.5s ease;
 }
 
-/* ---- Comments ---- */
+
 .comments-list {
   display: flex;
   flex-direction: column;
@@ -504,7 +491,7 @@
   padding: 48px 0;
 }
 
-/* ---- Video Tab ---- */
+
 .video-tab iframe {
   border-radius: var(--nova-radius-sm);
   width: 100%;
@@ -517,9 +504,7 @@
   padding: 48px 0;
 }
 
-/* ===========================
-   RESPONSIVE
-   =========================== */
+
 
 @media (max-width: 900px) {
   .product-top-section {
@@ -546,6 +531,74 @@
     margin-top: 0;
     flex: 1;
   }
+}
+
+.add-review-section {
+  background: var(--nova-bg);
+  padding: 30px;
+  border-radius: var(--nova-radius);
+  margin-bottom: 40px;
+}
+
+.add-review-section h3 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.star-picker {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.star-picker i {
+  font-size: 1.4rem;
+  color: var(--nova-accent);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.star-picker i:hover {
+  transform: scale(1.2);
+}
+
+.add-review-section textarea {
+  width: 100%;
+  padding: 15px;
+  border: 1.5px solid var(--nova-border);
+  border-radius: 12px;
+  font-family: var(--font-nova);
+  font-size: 0.95rem;
+  resize: vertical;
+  min-height: 100px;
+  margin-bottom: 15px;
+}
+
+.add-review-section textarea:focus {
+  outline: none;
+  border-color: var(--nova-dark);
+}
+
+.submit-review-btn {
+  background: var(--nova-dark);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 50px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.submit-review-btn:hover:not(:disabled) {
+  background: #000;
+  transform: translateY(-2px);
+}
+
+.submit-review-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 @media (max-width: 600px) {

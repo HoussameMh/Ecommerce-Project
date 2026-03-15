@@ -8,4 +8,17 @@ const getUsers = async (req, res) => {
   res.status(StatusCodes.OK).json({ users, count: users.length });
 }
 
-module.exports = { getUsers };
+
+const showMe = async (req, res) => {
+  const { userId } = req.user;
+
+  const user = await User.findById(userId).select('-password');
+
+  if (!user) {
+    throw new NotFoundError(`No user found with id: ${userId}`);
+  }
+
+  res.status(StatusCodes.OK).json({ user });
+}
+
+module.exports = { getUsers, showMe };
