@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
+import { api } from './utils/api'
 import { showToast } from '../../utils/showToast';
 import './productPage.css';
 
@@ -18,11 +18,11 @@ export function ProductPage({ refreshCount }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const productRes = await axios.get(`/api/v1/products/${id}`);
+        const productRes = await api.get(`/api/v1/products/${id}`);
         setProduct(productRes.data.product);
         setMainImage(productRes.data.product.coverImage);
 
-        const reviewsRes = await axios.get(`/api/v1/reviews/product/${id}`);
+        const reviewsRes = await api.get(`/api/v1/reviews/product/${id}`);
         setReviews(reviewsRes.data.reviews);
       } catch (error) {
         console.error(error);
@@ -38,7 +38,7 @@ export function ProductPage({ refreshCount }) {
       const token = localStorage.getItem('token');
       if (!token) return showToast("Please login first", "error");
 
-      await axios.post('/api/v1/cart/items',
+      await api.post('/api/v1/cart/items',
         { productId: id, quantity: quantity },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -63,7 +63,7 @@ export function ProductPage({ refreshCount }) {
       const token = localStorage.getItem('token');
       if (!token) return showToast("Please login to leave a review", "error");
 
-      await axios.post('/api/v1/reviews',
+      await api.post('/api/v1/reviews',
         { productId: id, rating: newRating, comment: newComment },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -72,7 +72,7 @@ export function ProductPage({ refreshCount }) {
       setNewComment('');
       setNewRating(5);
 
-      const reviewsRes = await axios.get(`/api/v1/reviews/product/${id}`);
+      const reviewsRes = await api.get(`/api/v1/reviews/product/${id}`);
       setReviews(reviewsRes.data.reviews);
     } catch (error) {
       showToast(error.response?.data?.msg || "Error adding review", "error");

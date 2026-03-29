@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import axios from 'axios';
+import { api } from './utils/api'
 import { useNavigate } from 'react-router';
 import { showToast } from '../../utils/showToast';
 import './checkoutPage.css';
@@ -17,7 +17,7 @@ export function CheckoutPage({ refreshCount }) {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
-      await axios.post('/api/v1/orders', address, {
+      await api.post('/api/v1/orders', address, {
         headers: { Authorization: `Bearer ${token}` }
       });
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { api } from './utils/api'
 import './ordersPage.css'
 
 export function OrdersPage() {
@@ -8,7 +8,7 @@ export function OrdersPage() {
   useEffect(() => {
     const fetchOrders = async () => {
       const token = localStorage.getItem('token');
-      const res = await axios.get('/api/v1/orders/my-orders', {
+      const res = await api.get('/api/v1/orders/my-orders', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setOrders(res.data.orders);

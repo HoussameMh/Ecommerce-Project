@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { api } from './utils/api'
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router'; 
 import { showToast } from '../../utils/showToast';
@@ -13,7 +13,7 @@ export function CartPage({ refreshCount }) {
   const fetchFullCart = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('/api/v1/cart', {
+      const res = await api.get('/api/v1/cart', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setCart(res.data.cart);
@@ -30,7 +30,7 @@ export function CartPage({ refreshCount }) {
     if (newQty < 1) return; 
     try {
       const token = localStorage.getItem('token');
-      await axios.patch(`/api/v1/cart/items/${productId}`,
+      await api.patch(`/api/v1/cart/items/${productId}`,
         { quantity: newQty },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -45,7 +45,7 @@ export function CartPage({ refreshCount }) {
   const removeItem = async (productId) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`/api/v1/cart/items/${productId}`, {
+      await api.delete(`/api/v1/cart/items/${productId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchFullCart();
@@ -60,7 +60,7 @@ export function CartPage({ refreshCount }) {
   const clearCart = async () => {
     try {
       const token = localStorage.getItem('token');
-      await axios.delete('/api/v1/cart', {
+      await api.delete('/api/v1/cart', {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchFullCart();

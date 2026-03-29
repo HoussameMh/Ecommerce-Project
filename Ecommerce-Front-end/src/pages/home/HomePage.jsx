@@ -1,4 +1,4 @@
-import axios from "axios";
+import { api } from './utils/api'
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router';
 import { showToast } from '../../utils/showToast';
@@ -30,7 +30,7 @@ export function HomePage({refreshCart}) {
         ];
         url += `numericFilters=${filters.join(',')}`;
 
-        const response = await axios.get(url);
+        const response = await api.get(url);
         setProducts(response.data.products);
       } catch (error) {
         console.error("Error API:", error);
@@ -49,7 +49,7 @@ export function HomePage({refreshCart}) {
         return;
       }
 
-      const response = await axios.post(
+      const response = await api.post(
         '/api/v1/cart/items',
         { productId: product._id, quantity: 1 },
         { headers: { Authorization: `Bearer ${token}` } }

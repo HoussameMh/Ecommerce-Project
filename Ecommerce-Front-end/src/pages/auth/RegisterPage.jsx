@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { api } from './utils/api'
 import { useNavigate } from 'react-router';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -20,7 +20,7 @@ export function RegisterPage({onAuthSuccess}) {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/v1/auth/register', {
+      const response = await api.post('/api/v1/auth/register', {
         lastName,
         firstName,
         email,

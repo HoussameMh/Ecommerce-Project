@@ -1,4 +1,4 @@
-import axios from 'axios'
+import { api } from './utils/api'
 import { Routes, Route, useNavigate } from 'react-router'
 import { useEffect, useState } from "react";
 import { Header } from './components/Header'
@@ -43,7 +43,7 @@ function App() {
       const token = localStorage.getItem('token');
       if (!token) return;
 
-      const response = await axios.get('/api/v1/cart', {
+      const response = await api.get('/api/v1/cart', {
         headers: { Authorization: `Bearer ${token}` }
       });
 

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { api } from './utils/api'
 import { showToast } from '../../utils/showToast';
 import './profilePage.css';
 
@@ -12,7 +12,7 @@ export function ProfilePage() {
     const fetchUser = async () => {
       try {
         const token = localStorage.getItem('token');
-        const res = await axios.get('/api/v1/users/showMe', {
+        const res = await api.get('/api/v1/users/showMe', {
           headers: { Authorization: `Bearer ${token}` }
         });
         setUser(res.data.user);

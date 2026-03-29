@@ -12,7 +12,9 @@ const cartRouter = require('./routes/cartRoutes')
 const orderRouter = require('./routes/orderRoutes')
 const reviewRouter = require('./routes/reviewRoutes')
 
-app.use(cors());
+app.use(cors({
+  origin: '*'
+}));
 app.use(express.json());
 
 
@@ -25,7 +27,7 @@ app.use('/api/v1/orders', orderRouter)
 app.use('/api/v1/reviews', reviewRouter)
 
 
-const port = 3000
+const port = process.env.PORT || 3000
 const start = async () => {
   try {
     await connectDB(process.env.MONGO_URI);
@@ -38,3 +40,6 @@ const start = async () => {
 };
 
 start()
+
+
+module.exports = app;
