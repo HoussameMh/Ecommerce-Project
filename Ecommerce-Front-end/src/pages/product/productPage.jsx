@@ -1,6 +1,6 @@
+import api from '../../utils/api'
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { api } from './utils/api'
 import { showToast } from '../../utils/showToast';
 import './productPage.css';
 

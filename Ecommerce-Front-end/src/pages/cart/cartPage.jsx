@@ -1,4 +1,4 @@
-import { api } from './utils/api'
+import api from '../../utils/api'
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router'; 
 import { showToast } from '../../utils/showToast';

@@ -1,5 +1,5 @@
+import api from '../../utils/api'
 import { useEffect, useState } from 'react';
-import { api } from './utils/api'
 import './ordersPage.css'
 
 export function OrdersPage() {

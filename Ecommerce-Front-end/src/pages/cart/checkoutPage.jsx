@@ -1,5 +1,5 @@
+import api from '../../utils/api'
 import { useState } from 'react';
-import { api } from './utils/api'
 import { useNavigate } from 'react-router';
 import { showToast } from '../../utils/showToast';
 import './checkoutPage.css';

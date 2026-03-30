@@ -1,4 +1,4 @@
-import { api } from './utils/api'
+import api from './utils/api'
 import { Routes, Route, useNavigate } from 'react-router'
 import { useEffect, useState } from "react";
 import { Header } from './components/Header'

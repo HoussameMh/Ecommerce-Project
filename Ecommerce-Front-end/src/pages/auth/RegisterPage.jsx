@@ -1,4 +1,4 @@
-import { api } from './utils/api'
+import api from '../../utils/api'
 import { useNavigate } from 'react-router';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -66,7 +66,7 @@ export function RegisterPage({onAuthSuccess}) {
                   <input
                     type='text'
                     placeholder='firstName'
-                    value={lastName}
+                    value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
                   />
                   <i className="fa-solid fa-user" />
